@@ -600,7 +600,7 @@
         <p class="subtitle">Speedrunning Tool</p>
         <h1 class="title">HOSPITAL RNG TOOL</h1>
         <p class="title-accent">SILENT HILL 4: THE ROOM</p>
-        <p class="tagline">Instant door identification through real-time memory analysis</p>
+       <!-- <p class="tagline">Instant door identification through real-time memory analysis</p> -->
     </header>
 
     <div class="download-section">
@@ -618,21 +618,21 @@
         <section class="section">
             <div class="section-header">
                 <div class="section-number">01</div>
-                <h2 class="section-title">THE PROBLEM</h2>
+                <h2 class="section-title">THE PROPOSED PROBLEM</h2>
             </div>
             <div class="section-content">
                 <p>
-                    In Silent Hill 4's Hospital World, players must locate two critical items hidden behind randomized doors: 
+                    In Silent Hill 4's Hospital World, players must locate two items hidden behind randomized doors: 
                     the <strong>Hospital Key</strong> and <strong>Eileen's Room</strong>. The second-floor corridor stretches out 
                     with 11 doors on each side — 22 total — and the game randomly assigns which two doors contain your objectives 
                     each playthrough.
                 </p>
                 <p>
-                    For speedrunners, this section is notorious. There's no way to predict which doors hold the key items. 
+                    There's no way to predict which doors hold the key items. 
                     You enter the corridor, pick a direction, and start checking doors one by one. Each wrong door costs 
-                    precious seconds — the animation to open, peek inside, close, and move to the next one adds up fast. 
+                    seconds of time — the animation to open, peek inside, close, and move to the next one adds up. 
                     In a bad run, you might check 15+ doors before finding both items. In a lucky run, they're right next 
-                    to each other at the end of the hall.
+                    to each other at the front end of the hall.
                 </p>
                 <div class="problem-box">
                     <p>
@@ -641,7 +641,7 @@
                     </p>
                 </div>
                 <p>
-                    For over 20 years, the speedrunning community accepted this as an unavoidable roll of the dice — 
+                    For over 20 years, this was an unavoidable roll of the dice — 
                     a section where skill couldn't help you, only luck. Until now.
                 </p>
             </div>
@@ -650,12 +650,12 @@
         <section class="section">
             <div class="section-header">
                 <div class="section-number">02</div>
-                <h2 class="section-title">THE SOLUTION</h2>
+                <h2 class="section-title">THE PROPOSED SOLUTION</h2>
             </div>
             <div class="section-content">
                 <p>
-                    The Hospital RNG Tool reads the game's memory in real-time to instantly identify which doors contain 
-                    the Hospital Key and Eileen's Room. No more guessing. No more wasted time. The moment you enter the 
+                    The Hospital RNG program attaches to the game process, reads the value of a specified memory address, and outputs which doors contain 
+                    the Hospital Key and Eileen's Room. No more guessing. The moment you enter the 
                     hospital world, you know exactly where to go.
                 </p>
 
@@ -666,7 +666,7 @@
                             <span class="titlebar-dot yellow"></span>
                             <span class="titlebar-dot green"></span>
                         </div>
-                        <span class="titlebar-text">SH4_Hospital_RNG_Tool.exe</span>
+                        <span class="titlebar-text">SH4_Hospital_Room_Tracker.exe</span>
                     </div>
                     <div class="tool-body">
                         <div class="tool-header-display">
@@ -727,8 +727,8 @@
             </div>
             <div class="section-content">
                 <p>
-                    The tool uses memory reading to access the game's door state array in real-time. 
-                    When Silent Hill 4 loads the hospital area, it populates a 22-byte array where each byte 
+                    The tool uses memory reading to access the game's door state array. 
+                    When Silent Hill 4 loads the hospital world, it populates a 22-byte array where each byte 
                     represents a door's contents.
                 </p>
 
@@ -744,7 +744,7 @@
                     <div class="tech-card">
                         <h4>Value Detection</h4>
                         <p>
-                            Each door byte contains a value indicating what's inside. The tool scans for 
+                            Each door byte contains a value indicating what's inside. The program scans for 
                             specific values.
                         </p>
                         <div class="code-snippet">Hospital Key = 14<br>Eileen's Room = 10</div>
@@ -753,14 +753,14 @@
                         <h4>Index Mapping</h4>
                         <p>
                             The array indices are reversed on both sides of the corridor — a quirk discovered 
-                            through reverse engineering.
+                            through testing.
                         </p>
                         <div class="code-snippet">Index 0 = L11 → Index 10 = L1<br>Index 11 = R11 → Index 21 = R1</div>
                     </div>
                     <div class="tech-card">
                         <h4>Real-Time Polling</h4>
                         <p>
-                            The tool continuously monitors the memory address and updates the display 
+                            The program continuously monitors the memory address and updates the display 
                             as soon as values are detected.
                         </p>
                         <div class="code-snippet">Update interval: 500ms</div>
@@ -780,7 +780,7 @@
                         <span class="feature-icon">
                             <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
                         </span>
-                        <span>Instant identification of Hospital Key and Eileen's Room locations</span>
+                        <span>Identification of Hospital Key and Eileen's Room locations</span>
                     </li>
                     <li>
                         <span class="feature-icon">
@@ -798,7 +798,7 @@
                         <span class="feature-icon">
                             <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
                         </span>
-                        <span>Standalone executable — no Python required</span>
+                        <span>Standalone executable</span>
                     </li>
                     <li>
                         <span class="feature-icon">
@@ -836,11 +836,11 @@
             <div class="section-content">
                 <p>
                     <strong>1.</strong> Launch Silent Hill 4: The Room on your PC.<br><br>
-                    <strong>2.</strong> Run the Hospital RNG Tool executable.<br><br>
-                    <strong>3.</strong> The tool will automatically detect and connect to the game process.<br><br>
-                    <strong>4.</strong> When you enter the Hospital World, the tool displays which doors contain 
+                    <strong>2.</strong> Run the Hospital Hospital Room Tracker executable.<br><br>
+                    <strong>3.</strong> The program will automatically detect and connect to the game process.<br><br>
+                    <strong>4.</strong> When you enter the Hospital World, the program displays which doors contain 
                     the Hospital Key and Eileen's Room.<br><br>
-                    <strong>5.</strong> Walk directly to the highlighted doors. No more guessing.
+                    <strong>5.</strong> Walk directly to the highlighted doors!
                 </p>
             </div>
         </section>
@@ -848,7 +848,7 @@
     </main>
 
     <footer class="footer">
-        <p>SILENT HILL 4: THE ROOM — HOSPITAL RNG TOOL</p>
+        <p>SILENT HILL 4: THE ROOM — HOSPITAL ROOM TRACKER</p>
         <p class="credit">DEVELOPED FOR THE SPEEDRUNNING COMMUNITY</p>
     </footer>
 
